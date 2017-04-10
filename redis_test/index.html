@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>SocketIO</title>
+        <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+        <script src='/socket.io/socket.io.js'></script>
+    </head>
+    
+    <body>
+        <h1>Wow! Sockets!</h1>
+        <h1 id="count"></h1>
+        
+        <button id="increment">Increment!</button>
+        <button id="decrement">Decrement!</button>
+        
+        
+    </body>
+    
+    <script>
+        
+        let socket = io.connect('https://vikingcodeschool-rttomlinson.c9users.io/');
+        
+        socket.on('new count', function(data) {
+            $('#count').html(data);
+       
+        
+            
+        });
+        
+        $('#increment').click(function(event) {
+            socket.emit('increment');
+        });
+        
+        $('#decrement').click(function() {
+            socket.emit('decrement');
+        });
+        
+        
+        
+        
+    </script>
+</html>
